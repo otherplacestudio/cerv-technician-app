@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { Sun, Moon, Loader2 } from 'lucide-react'
 
 // Exact shadcn/ui Button component
-const Button = ({ className = "", variant = "default", size = "default", type = "button", disabled = false, children, ...props }) => {
+const Button = ({ className = "", variant = "default", size = "default", type = "button", disabled = false, children, ...props }: any) => {
   const baseClasses = "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
   
   const variants = {
@@ -30,7 +30,7 @@ const Button = ({ className = "", variant = "default", size = "default", type = 
 }
 
 // Exact shadcn/ui Input component
-const Input = ({ className = "", type = "text", ...props }) => (
+const Input = ({ className = "", type = "text", ...props }: any) => (
   <input
     type={type}
     className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
@@ -39,7 +39,7 @@ const Input = ({ className = "", type = "text", ...props }) => (
 )
 
 // Exact shadcn/ui Label component
-const Label = ({ className = "", ...props }) => (
+const Label = ({ className = "", ...props }: any) => (
   <label
     className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${className}`}
     {...props}
@@ -47,20 +47,20 @@ const Label = ({ className = "", ...props }) => (
 )
 
 // Card components
-const Card = ({ className = "", children, ...props }) => (
+const Card = ({ className = "", children, ...props }: any) => (
   <div className={`rounded-lg border bg-card text-card-foreground shadow-sm ${className}`} {...props}>
     {children}
   </div>
 )
 
-const CardContent = ({ className = "", children, ...props }) => (
+const CardContent = ({ className = "", children, ...props }: any) => (
   <div className={`p-6 pt-0 ${className}`} {...props}>
     {children}
   </div>
 )
 
 // Tabs components
-const Tabs = ({ value, onValueChange, className = "", children, ...props }) => (
+const Tabs = ({ value, onValueChange, className = "", children, ...props }: any) => (
   <div className={`w-full ${className}`} {...props}>
     {React.Children.map(children, child => 
       React.cloneElement(child, { activeTab: value, setActiveTab: onValueChange })
@@ -68,7 +68,7 @@ const Tabs = ({ value, onValueChange, className = "", children, ...props }) => (
   </div>
 )
 
-const TabsList = ({ className = "", children, activeTab, setActiveTab, ...props }) => (
+const TabsList = ({ className = "", children, activeTab, setActiveTab, ...props }: any) => (
   <div className={`inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground w-full ${className}`} {...props}>
     {React.Children.map(children, child => 
       React.cloneElement(child, { activeTab, setActiveTab })
@@ -76,7 +76,7 @@ const TabsList = ({ className = "", children, activeTab, setActiveTab, ...props 
   </div>
 )
 
-const TabsTrigger = ({ value, className = "", children, activeTab, setActiveTab, ...props }) => (
+const TabsTrigger = ({ value, className = "", children, activeTab, setActiveTab, ...props }: any) => (
   <button
     onClick={() => setActiveTab(value)}
     className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 flex-1 ${
@@ -90,7 +90,7 @@ const TabsTrigger = ({ value, className = "", children, activeTab, setActiveTab,
   </button>
 )
 
-const TabsContent = ({ value, className = "", children, activeTab, ...props }) => {
+const TabsContent = ({ value, className = "", children, activeTab, ...props }: any) => {
   if (activeTab !== value) return null
   return (
     <div className={`mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${className}`} {...props}>

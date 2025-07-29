@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { Sun, Moon } from 'lucide-react'
 
 // Exact shadcn/ui Button component
-const Button = ({ className = "", variant = "default", size = "default", type = "button", children, ...props }) => {
+const Button = ({ className = "", variant = "default", size = "default", type = "button", children, ...props }: any) => {
   const baseClasses = "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
   
   const variants = {
@@ -29,7 +29,7 @@ const Button = ({ className = "", variant = "default", size = "default", type = 
 }
 
 // Exact shadcn/ui Input component
-const Input = ({ className = "", type = "text", ...props }) => (
+const Input = ({ className = "", type = "text", ...props }: any) => (
   <input
     type={type}
     className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
@@ -38,7 +38,7 @@ const Input = ({ className = "", type = "text", ...props }) => (
 )
 
 // Exact shadcn/ui Label component
-const Label = ({ className = "", ...props }) => (
+const Label = ({ className = "", ...props }: any) => (
   <label
     className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${className}`}
     {...props}
@@ -46,10 +46,10 @@ const Label = ({ className = "", ...props }) => (
 )
 
 // Utility function (like shadcn/ui cn)
-const cn = (...classes) => classes.filter(Boolean).join(' ')
+const cn = (...classes: any[]) => classes.filter(Boolean).join(' ')
 
 // SignupForm component
-function SignupForm({ className, ...props }) {
+function SignupForm({ className, ...props }: any) {
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <div className="flex flex-col gap-6">
