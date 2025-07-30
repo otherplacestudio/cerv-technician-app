@@ -31,9 +31,9 @@ export function JobCard({
 }: JobCardProps) {
   // Service type color mapping
   const serviceTypeColors = {
-    pool: 'bg-blue-500',
-    lawn: 'bg-green-500',
-    exterior: 'bg-amber-500'
+    pool: 'bg-blue-500 dark:bg-blue-600',
+    lawn: 'bg-green-500 dark:bg-green-600',
+    exterior: 'bg-amber-500 dark:bg-amber-600'
   }
 
   // Priority variant mapping for badges
@@ -45,10 +45,10 @@ export function JobCard({
 
   // Status color mapping
   const statusColors = {
-    'pending': 'bg-amber-100 text-amber-800 border-amber-200',
-    'en-route': 'bg-blue-100 text-blue-800 border-blue-200',
-    'in-progress': 'bg-indigo-100 text-indigo-800 border-indigo-200',
-    'completed': 'bg-green-100 text-green-800 border-green-200'
+    'pending': 'bg-amber-100 text-amber-800 border-amber-200 dark:bg-amber-900/20 dark:text-amber-400 dark:border-amber-800',
+    'en-route': 'bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800',
+    'in-progress': 'bg-indigo-100 text-indigo-800 border-indigo-200 dark:bg-indigo-900/20 dark:text-indigo-400 dark:border-indigo-800',
+    'completed': 'bg-green-100 text-green-800 border-green-200 dark:bg-green-900/20 dark:text-green-400 dark:border-green-800'
   }
 
   // Get initials for avatar fallback
@@ -75,7 +75,7 @@ export function JobCard({
           <div className="flex items-center gap-3 flex-1">
             <Avatar className="h-12 w-12">
               <AvatarImage src={job.customer.avatar} alt={job.customer.name} />
-              <AvatarFallback className="bg-slate-100 text-slate-600 font-medium">
+              <AvatarFallback className="bg-muted text-muted-foreground font-medium">
                 {getInitials(job.customer.name)}
               </AvatarFallback>
             </Avatar>
@@ -92,7 +92,7 @@ export function JobCard({
           
           {/* Service type badge */}
           <Badge 
-            className={`${serviceTypeColors[job.serviceType]} text-white border-0 px-3`}
+            className={`${serviceTypeColors[job.serviceType]} text-white border-0 px-6`}
           >
             {job.serviceType.charAt(0).toUpperCase() + job.serviceType.slice(1)}
           </Badge>
@@ -118,8 +118,8 @@ export function JobCard({
         {/* Earnings display */}
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <DollarSign className="h-5 w-5 text-green-600" />
-            <span className="text-2xl font-bold text-green-600">
+            <DollarSign className="h-5 w-5 text-green-600 dark:text-green-400" />
+            <span className="text-2xl font-bold text-green-600 dark:text-green-400">
               ${job.earnings.toFixed(2)}
             </span>
           </div>
@@ -147,7 +147,7 @@ export function JobCard({
           <Button
             variant="outline"
             size="default"
-            className="h-11 px-3"
+            className="h-11 px-6"
             onClick={() => onCall?.(job.customer.phone)}
           >
             <Phone className="h-4 w-4" />
@@ -156,7 +156,7 @@ export function JobCard({
           <Button
             variant="outline"
             size="default"
-            className="h-11 px-3"
+            className="h-11 px-6"
             onClick={() => onNavigate?.(job.address, job.coordinates)}
           >
             <Navigation className="h-4 w-4" />
@@ -165,7 +165,7 @@ export function JobCard({
           <Button
             variant="outline"
             size="default"
-            className="h-11 px-3"
+            className="h-11 px-6"
             onClick={() => onViewDetails?.(job.id)}
           >
             <Eye className="h-4 w-4" />

@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { JobCard } from '@/components/job/job-card'
+import { ThemeToggle } from '@/components/theme-toggle'
 import type { Job } from '@/lib/types'
 
 export default function TestPage() {
@@ -148,12 +149,15 @@ export default function TestPage() {
   }
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b">
-        <div className="px-4 py-3">
-          <h1 className="text-xl font-semibold text-stone-900">JobCard Component Test</h1>
-          <p className="text-sm text-stone-600 mt-1">Testing different states and configurations</p>
+      <div className="bg-card shadow-sm border-b border-input">
+        <div className="px-4 py-3 flex justify-between items-center">
+          <div>
+            <h1 className="text-xl font-semibold text-foreground">JobCard Component Test</h1>
+            <p className="text-sm text-muted-foreground mt-1">Testing different states and configurations</p>
+          </div>
+          <ThemeToggle />
         </div>
       </div>
 
@@ -163,7 +167,7 @@ export default function TestPage() {
           {sampleJobs.map((job) => (
             <div key={job.id}>
               {/* Label for each card */}
-              <p className="text-sm text-stone-600 mb-2 font-medium">
+              <p className="text-sm text-muted-foreground mb-2 font-medium">
                 {job.serviceType.charAt(0).toUpperCase() + job.serviceType.slice(1)} Service - 
                 {' '}{job.status.split('-').map(word => 
                   word.charAt(0).toUpperCase() + word.slice(1)
@@ -185,7 +189,7 @@ export default function TestPage() {
 
       {/* Footer info */}
       <div className="px-4 pb-8 pt-4">
-        <div className="max-w-md mx-auto text-center text-sm text-stone-500">
+        <div className="max-w-md mx-auto text-center text-sm text-muted-foreground">
           <p>Test page showing various JobCard states</p>
           <p className="mt-1">Click buttons to see console logs and alerts</p>
         </div>
