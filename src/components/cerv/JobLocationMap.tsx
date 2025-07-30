@@ -23,7 +23,7 @@ export function JobLocationMap({
 }: JobLocationMapProps) {
   // Apple Park Map View with real screenshot
   const MapView = () => (
-    <div className="relative w-full h-48 bg-gray-100 rounded-md overflow-hidden">
+    <div className="relative w-full h-48 bg-muted rounded-md overflow-hidden border border-input">
       {/* Apple Park aerial view background */}
       <div 
         className="absolute inset-0 bg-cover bg-center"
@@ -73,7 +73,7 @@ export function JobLocationMap({
         
         {/* On My Way Button */}
         <Button
-          className="w-full mt-4 h-12 bg-black hover:bg-gray-800 text-white"
+          className="w-full mt-4 h-12 bg-black hover:bg-gray-800 text-white border-0 focus:ring-0 focus:outline-none"
           onClick={onStartNavigation}
         >
           <MapPin className="h-4 w-4 mr-2" />

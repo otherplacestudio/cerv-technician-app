@@ -3,7 +3,6 @@
 import React from 'react'
 import { MapPin } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 
 // Time slot data structure
@@ -116,12 +115,11 @@ export function JobScheduleCard({
   }
 
   return (
-    <Card className={cn("w-full py-3 border-input", className)}>
-      <CardContent className="px-6">
+    <div className={cn("w-full bg-card text-card-foreground rounded-xl border border-input shadow-sm p-3", className)}>
         {/* Optional Header */}
-        <div className="mb-4">
+        <div className="mb-3">
           <h3 className="font-semibold text-base">{date}&apos;s Schedule</h3>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+          <p className="text-sm mt-1" style={{ color: 'oklch(0.37 0.00 0)' }}>
             {new Date().toLocaleDateString('en-US', { 
               weekday: 'long', 
               year: 'numeric', 
@@ -134,7 +132,7 @@ export function JobScheduleCard({
         {/* Timeline */}
         <div className="relative">
           {/* Vertical line */}
-          <div className="absolute left-12 top-0 bottom-0 w-0.5 bg-gray-300 dark:bg-white/15" />
+          <div className="absolute left-9 top-0 bottom-0 w-0.5 bg-gray-300 dark:bg-white/15" />
           
           {/* Time slots */}
           <div className="space-y-0">
@@ -142,11 +140,11 @@ export function JobScheduleCard({
               <div key={slot.id} className="relative flex">
                 {/* Time column */}
                 <div className="w-24 flex-shrink-0 py-2">
-                  <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                  <div className="text-sm font-medium" style={{ color: 'oklch(0.37 0.00 0)' }}>
                     {slot.time}
                   </div>
                   {index < slots.length - 1 && (
-                    <div className="text-sm text-gray-400 dark:text-gray-500 mt-8">
+                    <div className="text-sm mt-8" style={{ color: 'oklch(0.37 0.00 0)', opacity: 0.7 }}>
                       {getEndTime(slot.time, index)}
                     </div>
                   )}
@@ -204,8 +202,7 @@ export function JobScheduleCard({
             ))}
           </div>
         </div>
-      </CardContent>
-    </Card>
+    </div>
   )
 }
 
