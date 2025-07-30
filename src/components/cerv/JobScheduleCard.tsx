@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Clock, MapPin } from 'lucide-react'
+import { MapPin } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -120,7 +120,7 @@ export function JobScheduleCard({
       <CardContent className="px-6">
         {/* Optional Header */}
         <div className="mb-4">
-          <h3 className="font-semibold text-base">{date}'s Schedule</h3>
+          <h3 className="font-semibold text-base">{date}&apos;s Schedule</h3>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
             {new Date().toLocaleDateString('en-US', { 
               weekday: 'long', 

@@ -64,7 +64,7 @@ export function JobLocationMap({
         {/* Address Information */}
         <div className="mt-4 space-y-1">
           <h3 className="font-semibold text-base">
-            {customerFirstName}'s Home
+            {customerFirstName}&apos;s Home
           </h3>
           <p className="text-sm text-muted-foreground">
             {address}
