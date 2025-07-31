@@ -68,7 +68,7 @@ export function AppHeader({
           >
             <Bell className="h-5 w-5" />
             {notificationCount > 0 && (
-              <span className="absolute -top-1 -right-1 text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold text-black" style={{ backgroundColor: 'oklch(0.72 0.01 56)' }}>
+              <span className="absolute -top-1 -right-1 text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold text-black bg-red-500">
                 {notificationCount > 9 ? '9+' : notificationCount}
               </span>
             )}

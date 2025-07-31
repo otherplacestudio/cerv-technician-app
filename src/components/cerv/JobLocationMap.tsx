@@ -38,7 +38,7 @@ export function JobLocationMap({
       </div>
       
       {/* Apple Park label */}
-      <div className="absolute bottom-4 left-4 bg-white/90 px-2 py-1 rounded text-xs font-medium">
+      <div className="absolute bottom-4 left-4 bg-background/90 px-2 py-1 rounded text-xs font-medium text-foreground">
         Apple Park
       </div>
       
@@ -46,7 +46,7 @@ export function JobLocationMap({
       <Button
         variant="secondary"
         size="default"
-        className="absolute top-2 right-2 bg-white hover:bg-gray-100"
+        className="absolute top-2 right-2"
         onClick={onOpenMaps}
       >
         <ExternalLink className="h-3 w-3 mr-1" />
@@ -73,7 +73,7 @@ export function JobLocationMap({
         
         {/* On My Way Button */}
         <Button
-          className="w-full mt-4 h-12 bg-black hover:bg-gray-800 text-white border-0 focus:ring-0 focus:outline-none"
+          className="w-full mt-4 h-12 bg-foreground hover:bg-foreground/90 text-background border-0 focus:ring-0 focus:outline-none"
           onClick={onStartNavigation}
         >
           <MapPin className="h-4 w-4 mr-2" />

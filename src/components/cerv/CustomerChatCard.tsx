@@ -95,7 +95,7 @@ export function CustomerChatCard({
                 {/* Avatar for customer messages only */}
                 {message.sender === 'customer' && (
                   <Avatar className="h-8 w-8 flex-shrink-0">
-                    <AvatarFallback className="bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100">
+                    <AvatarFallback className="bg-primary/10 text-primary font-medium">
                       {message.customerInitials || customerFirstName[0] + customerLastName[0]}
                     </AvatarFallback>
                   </Avatar>
@@ -105,17 +105,16 @@ export function CustomerChatCard({
                 <div
                   className={`max-w-[70%] rounded-2xl px-4 py-3 break-words ${
                     message.sender === 'technician'
-                      ? 'bg-black text-white dark:bg-white dark:text-black'
-                      : 'text-white dark:text-white'
+                      ? 'bg-primary text-primary-foreground'
+                      : 'bg-muted text-muted-foreground'
                   }`}
-                  style={message.sender === 'customer' ? { backgroundColor: 'oklch(0.37 0.00 0)' } : {}}
                 >
                   <p className="text-sm whitespace-pre-wrap">{message.content}</p>
                   <p
                     className={`text-xs mt-1 ${
                       message.sender === 'technician'
-                        ? 'text-gray-300 dark:text-gray-600'
-                        : 'text-white/70 dark:text-white/70'
+                        ? 'text-primary-foreground/70'
+                        : 'text-muted-foreground/70'
                     }`}
                   >
                     {message.timestamp}
@@ -136,7 +135,7 @@ export function CustomerChatCard({
             variant="ghost"
             size="icon"
             onClick={onAttachment}
-            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+            className="text-muted-foreground hover:text-foreground"
           >
             <Paperclip className="h-5 w-5" />
           </Button>
@@ -153,7 +152,7 @@ export function CustomerChatCard({
             variant="ghost"
             size="icon"
             onClick={handleSend}
-            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+            className="text-muted-foreground hover:text-foreground"
           >
             <Send className="h-5 w-5" />
           </Button>

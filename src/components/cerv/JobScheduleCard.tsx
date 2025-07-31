@@ -4,6 +4,7 @@ import React from 'react'
 import { MapPin } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
+import { Card, CardContent } from '@/components/ui/card'
 
 // Time slot data structure
 interface TimeSlot {
@@ -91,11 +92,11 @@ export function JobScheduleCard({
   const getStatusVariant = (status?: string) => {
     switch(status) {
       case 'done':
-        return 'secondary' // Will style this green with className
+        return 'secondary' as const
       case 'active':
-        return 'default' // Will style this blue with className
+        return 'default' as const
       default:
-        return 'secondary'
+        return 'secondary' as const
     }
   }
 
@@ -115,11 +116,12 @@ export function JobScheduleCard({
   }
 
   return (
-    <div className={cn("w-full bg-card text-card-foreground rounded-xl border border-input shadow-sm p-3", className)}>
+    <Card className={cn("w-full py-0 border-input", className)}>
+      <CardContent className="px-3">
         {/* Optional Header */}
         <div className="mb-3">
           <h3 className="font-semibold text-base">{date}&apos;s Schedule</h3>
-          <p className="text-sm mt-1" style={{ color: 'oklch(0.72 0.00 0)' }}>
+          <p className="text-sm text-muted-foreground mt-1">
             {new Date().toLocaleDateString('en-US', { 
               weekday: 'long', 
               year: 'numeric', 
@@ -132,7 +134,7 @@ export function JobScheduleCard({
         {/* Timeline */}
         <div className="relative">
           {/* Vertical line - positioned between time and content */}
-          <div className="absolute left-16 top-0 bottom-0 w-0.5 bg-gray-300 dark:bg-white/15" />
+          <div className="absolute left-16 top-0 bottom-0 w-0.5 bg-muted" />
           
           {/* Time slots */}
           <div className="space-y-0">
@@ -140,7 +142,7 @@ export function JobScheduleCard({
               <div key={slot.id} className="relative flex">
                 {/* Time column */}
                 <div className="w-16 flex-shrink-0 py-2 pr-3">
-                  <div className="text-sm font-medium" style={{ color: 'oklch(0.72 0.00 0)' }}>
+                  <div className="text-sm font-medium text-muted-foreground">
                     {slot.time}
                   </div>
                 </div>
@@ -149,23 +151,23 @@ export function JobScheduleCard({
                 <div className="flex-1 pb-3 pl-4">
                   {slot.type === 'travel' ? (
                     // Travel card
-                    <div className="bg-gray-100 dark:!bg-[#2E2E2E] rounded-lg p-3 flex items-center gap-2">
-                      <MapPin className="h-4 w-4 text-gray-500 dark:!text-white" />
-                      <span className="text-sm font-medium text-gray-700 dark:!text-white">Travel • {slot.duration}</span>
+                    <div className="bg-muted rounded-lg p-3 flex items-center gap-2">
+                      <MapPin className="h-4 w-4 text-muted-foreground" />
+                      <span className="text-sm font-medium text-muted-foreground">Travel • {slot.duration}</span>
                     </div>
                   ) : (
                     // Job card
                     <div 
                       className={cn(
-                        "bg-[#C3D6FD] dark:bg-[#000] text-black dark:text-white rounded-lg p-4 cursor-pointer transition-all hover:shadow-md",
-                        slot.status === 'active' && "ring-2 ring-blue-500"
+                        "bg-card text-card-foreground rounded-lg p-4 cursor-pointer transition-all hover:shadow-md border border-input",
+                        slot.status === 'active' && "ring-2 ring-primary"
                       )}
                       onClick={() => onJobClick && onJobClick(slot)}
                     >
                       <div className="flex items-start justify-between mb-2">
                         <div className="flex-1">
-                          <h4 className="font-semibold text-base text-black dark:text-white">{slot.customer?.name}</h4>
-                          <p className="text-sm text-gray-700 dark:text-gray-300 mt-1">
+                          <h4 className="font-semibold text-base">{slot.customer?.name}</h4>
+                          <p className="text-sm text-muted-foreground mt-1">
                             {slot.customer?.address}
                           </p>
                         </div>
@@ -174,8 +176,8 @@ export function JobScheduleCard({
                             variant={getStatusVariant(slot.status)} 
                             className={cn(
                               "ml-2",
-                              slot.status === 'done' && "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400 hover:bg-green-100",
-                              slot.status === 'active' && "bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400 hover:bg-blue-100"
+                              slot.status === 'done' && "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400",
+                              slot.status === 'active' && "bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400"
                             )}
                           >
                             {slot.status.charAt(0).toUpperCase() + slot.status.slice(1)}
@@ -186,7 +188,7 @@ export function JobScheduleCard({
                         <Badge className="bg-blue-100 text-blue-900 dark:bg-blue-900/20 dark:text-blue-200 border-transparent">
                           {slot.customer?.serviceType?.replace(/^CERV\s+/i, '')}
                         </Badge>
-                        <span className="text-sm text-gray-700 dark:text-gray-300">
+                        <span className="text-sm text-muted-foreground">
                           {slot.duration}
                         </span>
                       </div>
@@ -197,7 +199,8 @@ export function JobScheduleCard({
             ))}
           </div>
         </div>
-    </div>
+      </CardContent>
+    </Card>
   )
 }
 
