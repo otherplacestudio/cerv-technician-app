@@ -45,13 +45,14 @@ export function CustomerCardInfo({
     ? "bg-green-100 text-green-900 dark:bg-green-900/20 dark:text-green-200 border-transparent"
     : ""
   
-  // Service badge color (red/coral for pool)
-  const serviceBadgeStyle = serviceType.includes("POOL") 
-    ? "bg-red-100 text-red-900 dark:bg-red-900/20 dark:text-red-200 border-transparent"
-    : "bg-blue-100 text-blue-900 dark:bg-blue-900/20 dark:text-blue-200 border-transparent"
+  // Service badge color (blue for all services)
+  const serviceBadgeStyle = "bg-blue-100 text-blue-900 dark:bg-blue-900/20 dark:text-blue-200 border-transparent"
+  
+  // Clean service type display (remove "CERV" prefix)
+  const displayServiceType = serviceType.replace(/^CERV\s+/i, '')
 
   return (
-    <Card className={cn("w-full py-3 border-input", className)}>
+    <Card className={cn("w-full py-0 border-input", className)}>
       <CardContent className="px-3">
         {/* Main Content Row */}
         <div className="flex items-start gap-3">
@@ -78,7 +79,7 @@ export function CustomerCardInfo({
             {/* Service Badge */}
             <div className="flex gap-2 mt-4">
               <Badge className={serviceBadgeStyle}>
-                {serviceType}
+                {displayServiceType}
               </Badge>
               <Badge variant={statusVariant} className={statusBadgeStyle}>
                 {status.toUpperCase()}

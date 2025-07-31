@@ -119,7 +119,7 @@ export function JobScheduleCard({
         {/* Optional Header */}
         <div className="mb-3">
           <h3 className="font-semibold text-base">{date}&apos;s Schedule</h3>
-          <p className="text-sm mt-1" style={{ color: 'oklch(0.37 0.00 0)' }}>
+          <p className="text-sm mt-1" style={{ color: 'oklch(0.72 0.00 0)' }}>
             {new Date().toLocaleDateString('en-US', { 
               weekday: 'long', 
               year: 'numeric', 
@@ -131,27 +131,22 @@ export function JobScheduleCard({
         
         {/* Timeline */}
         <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-9 top-0 bottom-0 w-0.5 bg-gray-300 dark:bg-white/15" />
+          {/* Vertical line - positioned between time and content */}
+          <div className="absolute left-16 top-0 bottom-0 w-0.5 bg-gray-300 dark:bg-white/15" />
           
           {/* Time slots */}
           <div className="space-y-0">
             {slots.map((slot, index) => (
               <div key={slot.id} className="relative flex">
                 {/* Time column */}
-                <div className="w-24 flex-shrink-0 py-2">
-                  <div className="text-sm font-medium" style={{ color: 'oklch(0.37 0.00 0)' }}>
+                <div className="w-16 flex-shrink-0 py-2 pr-3">
+                  <div className="text-sm font-medium" style={{ color: 'oklch(0.72 0.00 0)' }}>
                     {slot.time}
                   </div>
-                  {index < slots.length - 1 && (
-                    <div className="text-sm mt-8" style={{ color: 'oklch(0.37 0.00 0)', opacity: 0.7 }}>
-                      {getEndTime(slot.time, index)}
-                    </div>
-                  )}
                 </div>
                 
                 {/* Content */}
-                <div className="flex-1 pb-5">
+                <div className="flex-1 pb-3 pl-4">
                   {slot.type === 'travel' ? (
                     // Travel card
                     <div className="bg-gray-100 dark:!bg-[#2E2E2E] rounded-lg p-3 flex items-center gap-2">
@@ -189,7 +184,7 @@ export function JobScheduleCard({
                       </div>
                       <div className="flex items-center justify-between">
                         <Badge className="bg-blue-100 text-blue-900 dark:bg-blue-900/20 dark:text-blue-200 border-transparent">
-                          {slot.customer?.serviceType}
+                          {slot.customer?.serviceType?.replace(/^CERV\s+/i, '')}
                         </Badge>
                         <span className="text-sm text-gray-700 dark:text-gray-300">
                           {slot.duration}

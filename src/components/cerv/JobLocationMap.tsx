@@ -56,7 +56,7 @@ export function JobLocationMap({
   )
 
   return (
-    <Card className={cn("w-full py-3 border-input", className)}>
+    <Card className={cn("w-full py-0 border-input", className)}>
       <CardContent className="px-3">
         {/* Map View */}
         <MapView />

@@ -10,7 +10,8 @@ import { DailyMetricsCard } from '@/components/cerv/DailyMetricsCard'
 import { DailyStatsCard } from '@/components/cerv/DailyStatsCard'
 import { ThemeToggle } from '@/components/theme-toggle'
 import Image from 'next/image'
-import { Copy, Check, Code2, Eye } from 'lucide-react'
+import { Copy, Check, Code2, Eye, Github } from 'lucide-react'
+import { ShaderOrbLogo } from '@/components/cerv/ShaderOrbLogo'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
@@ -23,11 +24,16 @@ interface Message {
   customerInitials?: string
 }
 
+// GitHub repository base URL
+const GITHUB_REPO_URL = 'https://github.com/otherplacestudio/cerv-technician-app'
+const GITHUB_BRANCH = 'main' // Update this if you use a different default branch
+
 // Component showcase data
 const componentShowcase = [
   {
     name: 'CERV Logo',
     description: 'Brand logo with automatic dark mode support',
+    githubPath: '/public/cerv-logo.svg',
     code: `import Image from 'next/image'
 
 // Light mode (default)
@@ -65,6 +71,7 @@ const componentShowcase = [
   {
     name: 'AppHeader',
     description: 'Main app header with user info and notifications',
+    githubPath: '/src/components/cerv/AppHeader.tsx',
     code: `import { AppHeader } from '@/components/cerv/AppHeader'
 
 <AppHeader
@@ -89,6 +96,7 @@ const componentShowcase = [
   {
     name: 'CustomerCardInfo',
     description: 'Customer information card with contact actions',
+    githubPath: '/src/components/cerv/CustomerCardInfo.tsx',
     code: `import { CustomerCardInfo } from '@/components/cerv/CustomerCardInfo'
 
 <CustomerCardInfo
@@ -119,6 +127,7 @@ const componentShowcase = [
   {
     name: 'JobLocationMap',
     description: 'Interactive map showing job location with navigation',
+    githubPath: '/src/components/cerv/JobLocationMap.tsx',
     code: `import { JobLocationMap } from '@/components/cerv/JobLocationMap'
 
 <JobLocationMap
@@ -143,6 +152,7 @@ const componentShowcase = [
   {
     name: 'CustomerChatCard',
     description: 'Real-time chat interface with customers',
+    githubPath: '/src/components/cerv/CustomerChatCard.tsx',
     code: `import { CustomerChatCard } from '@/components/cerv/CustomerChatCard'
 
 const messages = [
@@ -184,6 +194,7 @@ const messages = [
   {
     name: 'JobScheduleCard',
     description: 'Daily schedule timeline with job slots',
+    githubPath: '/src/components/cerv/JobScheduleCard.tsx',
     code: `import { JobScheduleCard } from '@/components/cerv/JobScheduleCard'
 
 <JobScheduleCard
@@ -207,6 +218,7 @@ const messages = [
   {
     name: 'DailyMetricsCard',
     description: 'Daily performance metrics display',
+    githubPath: '/src/components/cerv/DailyMetricsCard.tsx',
     code: `import { DailyMetricsCard } from '@/components/cerv/DailyMetricsCard'
 
 <DailyMetricsCard />
@@ -227,6 +239,7 @@ const messages = [
   {
     name: 'DailyStatsCard',
     description: 'Daily activity statistics',
+    githubPath: '/src/components/cerv/DailyStatsCard.tsx',
     code: `import { DailyStatsCard } from '@/components/cerv/DailyStatsCard'
 
 <DailyStatsCard />
@@ -376,12 +389,10 @@ export default function UIKitPage() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <div className="bg-card border-b border-input sticky top-0 z-40">
-        <div className="container max-w-6xl mx-auto px-4 py-6">
+        <div className="container max-w-6xl mx-auto px-4 py-0">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">C</span>
-              </div>
+            <div className="flex items-center gap-2">
+              <ShaderOrbLogo size={100} className="rounded-lg overflow-hidden" />
               <div>
                 <h1 className="text-xl font-bold">CERV Mobile App UI Kit</h1>
                 <p className="text-sm text-muted-foreground">
@@ -411,8 +422,29 @@ export default function UIKitPage() {
           {componentShowcase.map((component, index) => (
             <Card key={component.name} className="overflow-hidden border-input">
               <div className="border-b border-input px-6 pt-3 pb-4">
-                <h2 className="text-lg font-semibold">{component.name}</h2>
-                <p className="text-sm text-muted-foreground">{component.description}</p>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h2 className="text-lg font-semibold">{component.name}</h2>
+                    <p className="text-sm text-muted-foreground">{component.description}</p>
+                  </div>
+                  {component.githubPath && (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      asChild
+                      className="ml-4"
+                    >
+                      <a
+                        href={`${GITHUB_REPO_URL}/blob/${GITHUB_BRANCH}${component.githubPath}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Github className="h-3 w-3 mr-1" />
+                        View Source
+                      </a>
+                    </Button>
+                  )}
+                </div>
               </div>
               <CardContent className="p-6">
                 {/* Custom tab implementation without Radix focus management */}

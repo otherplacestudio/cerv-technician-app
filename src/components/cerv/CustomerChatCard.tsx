@@ -73,7 +73,7 @@ export function CustomerChatCard({
   }
 
   return (
-    <Card className={cn("w-full flex flex-col py-3 border-input", className)}>
+    <Card className={cn("w-full flex flex-col py-0 border-input", className)}>
       {/* Chat Header */}
       <CardContent className="border-b border-input flex-shrink-0 px-3 py-0">
         <h3 className="font-semibold text-base py-3">
