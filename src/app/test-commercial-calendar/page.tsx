@@ -150,7 +150,7 @@ export default function TestCommercialCalendarPage() {
         <div className="space-y-4">
           <h2 className="text-xl font-semibold text-foreground">Today Highlight</h2>
           <p className="text-sm text-muted-foreground">
-            Today's date is automatically highlighted with an accent background
+            Today&apos;s date is automatically highlighted with an accent background
           </p>
           <CommercialCalendarCard 
             selectedDate={new Date(new Date().getFullYear(), new Date().getMonth(), 15)}

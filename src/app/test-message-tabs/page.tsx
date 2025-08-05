@@ -32,7 +32,7 @@ export default function TestMessageTabsPage() {
           </p>
           {searchValue && (
             <p className="text-sm text-muted-foreground mt-2">
-              Filtering by: "{searchValue}"
+              Filtering by: &quot;{searchValue}&quot;
             </p>
           )}
         </div>

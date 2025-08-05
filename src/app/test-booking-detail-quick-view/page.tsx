@@ -180,7 +180,7 @@ export default function TestBookingDetailQuickViewPage() {
 
         {/* Today's Date */}
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold text-foreground">Today's Booking</h2>
+          <h2 className="text-xl font-semibold text-foreground">Today&apos;s Booking</h2>
           <BookingDetailQuickViewCard 
             serviceType="HVAC Maintenance"
             price={125.00}

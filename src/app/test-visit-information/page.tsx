@@ -25,7 +25,7 @@ export default function TestVisitInformationPage() {
 
         {/* Tomorrow's Visit */}
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold text-foreground">Tomorrow's Visit</h2>
+          <h2 className="text-xl font-semibold text-foreground">Tomorrow&apos;s Visit</h2>
           <VisitInformationCard 
             date="Tomorrow"
             timeSlot="2:00 - 4:00 PM"
