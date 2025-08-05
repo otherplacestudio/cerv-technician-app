@@ -24,7 +24,6 @@ import {
   XCircle,
   Package,
   Truck,
-  Tool,
   Clipboard
 } from 'lucide-react'
 
@@ -191,7 +190,7 @@ export default function TestCommercialActionGridPage() {
               },
               {
                 id: '7',
-                icon: <Tool className="h-7 w-7" />,
+                icon: <Wrench className="h-7 w-7" />,
                 title: 'Maintenance',
                 subtitle: 'Service log',
                 onClick: () => handleAction('Maintenance')

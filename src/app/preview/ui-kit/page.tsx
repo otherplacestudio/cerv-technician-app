@@ -205,7 +205,7 @@ export default function UIKitPage() {
               <h2 className="text-xl font-semibold mb-4">Message List Item</h2>
               <MessageListItem
                 customerName="John Doe"
-                lastMessage="Thanks for servicing the pool!"
+                message="Thanks for servicing the pool!"
                 timestamp="2:30 PM"
                 isUnread={true}
                 onClick={() => console.log('Message clicked')}
