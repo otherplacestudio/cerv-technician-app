@@ -11,7 +11,7 @@ export default function PerformanceScreen() {
       
       {/* Scrollable content area */}
       <div className="flex-1 overflow-y-auto pb-20">
-        <div className="p-4">
+        <div className="p-6">
           <h1 className="text-2xl font-bold text-foreground mb-4">Performance</h1>
           
           {/* Placeholder content */}

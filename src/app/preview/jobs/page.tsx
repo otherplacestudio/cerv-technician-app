@@ -67,7 +67,7 @@ export default function JobsScreen() {
       
       {/* Scrollable content area */}
       <div className="flex-1 overflow-y-auto pb-20">
-        <div className="space-y-4 p-4">
+        <div className="space-y-6 p-6 pt-4">
           {/* CustomerCardInfo */}
           <CustomerCardInfo
             customerFirstName="Sarah"
