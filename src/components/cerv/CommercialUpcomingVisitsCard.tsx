@@ -59,7 +59,7 @@ export const CommercialUpcomingVisitsCard: React.FC<CommercialUpcomingVisitsCard
       case 'In Progress':
         return 'default'
       case 'Completed':
-        return 'success'
+        return 'default'
       case 'Cancelled':
         return 'destructive'
       default:
